@@ -1,0 +1,9 @@
+DECLARE 
+@pathName NVARCHAR(512),
+@databaseName NVARCHAR(512) 
+SET @databaseName = 'CRUD' -- ELEGIR BASE
+SET @pathName = 'D:\SQL\' + @databasename + '_' +
+    FORMAT(GETDATE() , 'dd-mm-yyyy_hh.mm.ss')+ '.bak'
+BACKUP DATABASE @databaseName TO  DISK = @pathName WITH NOFORMAT, 
+    NOINIT,  NAME = N'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+GO
